@@ -14,6 +14,7 @@ router.get('/api/notes', (req, res) => {
 //function posting notes to JSON file
 router.post('/api/notes', (req, res) => {
     const note = req.body
+    note.id = uuidv4();
     fs.readFile(path.join(__dirname, '..', 'db', 'db.json'), 'utf8', (err, data) => {
         if (err) { console.log(err) }
         const newNotes = JSON.parse(data)
